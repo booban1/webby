@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customers</title>
+    <meta charset="utf-8">
+    <link href="site.css" rel="stylesheet">
+</head>
+<body>
+        <!-- <nav id="nav01"></nav> -->
+         <!-- fails to load the scrited nav bar. Have to patch this in -->
+         
+        <ul id='menu'>
+                <li><a href ='index.html'> Home</a></li>
+                <li><a href= 'customers.html'>Customer</a></li>
+                <li><a href='about.html'> About</a></Li>
+                <li><a href='login.html'> Login </a></Li>
+                </ul>
+    <div id="main">
+        <h1>Customers</h1>
+
+        <div id="id01"></div>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>City</th>
+                <th>Company</th>
+            </tr>
+            <tr>
+                <td>Booban Times</td>
+                <td>Kisumu</td>
+                <td>Perfecto designs</td>
+            </tr>
+            <tr>
+                 <td>Steve Kings</td>
+                 <td>Nairobi</td>
+                 <td>Writing Channel</td>
+            </tr>
+            <tr>
+                <td>Booban Times</td>
+                <td>Kisumu</td>
+                <td>Perfecto designs</td>
+             </tr>
+            <tr>
+                <td>Steve Kings</td>
+                <td>Nairobi</td>
+                <td>Writing Channel</td>
+            </tr>
+        </table>
+
+
+    </div>
+    <script src="script.js"></script>
+    <script>
+        var xmlhttp = new XMLHttpRequest();
+        var url = "http://www.w3schools.com/website/customers.php";
+
+        xmlhttp.onreadystatechange=function(){
+            if(xmlhttp.readyState== 4 && xmlhttp.status == 200){
+                myFunction(xmlhttp.responseText);
+            }
+        }
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+
+        function myFunction(response) {
+            var obj = JSON.parse(response);
+            var arr = obj.records;
+            var i;
+            var out = "<table><tr><th>Name</th><th>City</th><th>Coutry</th></tr>";
+            
+                for (i=0; i < arr.lenghth; i++ ){
+                    out += "<tr><td>" + arr[i].Name + "</td><td>" + arr[i].City + "</td><td>"  + arr[i].Country  + "</td></tr>" ;          
+                 }
+
+            out += "</table>"
+            document.getElementById("id01").innerHTML = out;
+            
+        }
+
+    </script>
+</body>
+</html>
