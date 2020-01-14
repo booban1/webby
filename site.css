@@ -72,3 +72,9 @@ ul#menu li a:hover
     background-color: black;
 }
 
+#w3-card-4 .w3-container w3-blue
+{
+ width: 300px;
+ height: 300px;
+ margin: auto;
+}
